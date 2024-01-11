@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+      body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      form {
+        margin: 0 auto;
+        width: 300px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 5px;
+      }
+      button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to my Telegram bot!</h1>
+    <form>
+      <label for="name">What is your name?</label>
+      <input type="text" id="name" name="name">
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      // When the form is submitted, transmit the user's name back to the bot
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.querySelector('#name').value;
+        Telegram.WebApp.sendData(JSON.stringify({ name: name }));
+      });
+    </script>
+  </body>
+</html>
